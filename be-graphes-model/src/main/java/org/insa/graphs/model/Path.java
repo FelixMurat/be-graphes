@@ -2,6 +2,7 @@ package org.insa.graphs.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -210,12 +211,16 @@ public class Path {
      * 
      * @return Total length of the path (in meters).
      * 
-     * @deprecated Need to be implemented.
      */
     public float getLength() {
-        // TODO:
-        return 0;
+        float resu=0.0f;
+        Iterator<Arc>iter=this.arcs.iterator();
+        while(iter.hasNext()) {
+        	resu =resu+iter.next().getLength();
+        }
+        return resu;
     }
+    
 
     /**
      * Compute the time required to travel this path if moving at the given speed.
