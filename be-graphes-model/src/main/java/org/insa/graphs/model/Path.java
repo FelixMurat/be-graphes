@@ -31,12 +31,27 @@ public class Path {
      * @throws IllegalArgumentException If the list of nodes is not valid, i.e. two
      *         consecutive nodes in the list are not connected in the graph.
      * 
-     * @deprecated Need to be implemented.
      */
     public static Path createFastestPathFromNodes(Graph graph, List<Node> nodes)
             throws IllegalArgumentException {
         List<Arc> arcs = new ArrayList<Arc>();
-        // TODO:
+        if (nodes.size()==1) {
+        	return new Path(graph,nodes.get(0));
+        }
+        for(int i=0;i<nodes.size()-1;i++) {
+        	double tempsMin=Double.MAX_VALUE;
+            Arc arcOptimal=null;
+        	for(Arc o: nodes.get(i).getSuccessors()) {
+        		if ((o.getMinimumTravelTime()<tempsMin)&&(o.getDestination()==nodes.get(i+1))) {
+        			tempsMin=o.getMinimumTravelTime();
+        			arcOptimal=o;
+        		}
+        	}
+        	if (tempsMin==Double.MAX_VALUE) {
+        		throw new IllegalArgumentException("Liste de noeuds invalide.");
+        	}
+        	arcs.add(arcOptimal);
+        }
         return new Path(graph, arcs);
     }
 
@@ -52,12 +67,27 @@ public class Path {
      * @throws IllegalArgumentException If the list of nodes is not valid, i.e. two
      *         consecutive nodes in the list are not connected in the graph.
      * 
-     * @deprecated Need to be implemented.
      */
     public static Path createShortestPathFromNodes(Graph graph, List<Node> nodes)
             throws IllegalArgumentException {
         List<Arc> arcs = new ArrayList<Arc>();
-        // TODO:
+        if (nodes.size()==1) {
+        	return new Path(graph,nodes.get(0));
+        }
+        for(int i=0;i<nodes.size()-1;i++) {
+        	float distMin=Float.MAX_VALUE;
+            Arc arcOptimal=null;
+        	for(Arc o: nodes.get(i).getSuccessors()) {
+        		if ((o.getLength()<distMin)&&(o.getDestination()==nodes.get(i+1))) {
+        			distMin=o.getLength();
+        			arcOptimal=o;
+        		}
+        	}
+        	if (distMin==Float.MAX_VALUE) {
+        		throw new IllegalArgumentException("Liste de noeuds invalide.");
+        	}
+        	arcs.add(arcOptimal);
+        }
         return new Path(graph, arcs);
     }
 
