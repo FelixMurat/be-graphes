@@ -199,11 +199,20 @@ public class Path {
      * 
      * @return true if the path is valid, false otherwise.
      * 
-     * @deprecated Need to be implemented.
      */
     public boolean isValid() {
-        // TODO:
-        return false;
+    	boolean resu=true;
+	        for(int i=0;i<(arcs.size()-1);i++) {
+	        	if (i==0) {
+	        		if (arcs.get(i).getOrigin()!=getOrigin()) {
+	        			resu=false;
+	        		}
+	        	}
+	        	if(arcs.get(i).getDestination()!=arcs.get(i+1).getOrigin()) {
+	        		resu=false;
+	        	}	
+	        }
+        return (resu||(isEmpty())||(size()==1));
     }
 
     /**
