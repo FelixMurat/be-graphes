@@ -19,4 +19,16 @@ public class Label{
 	public double getCost() {
 		return this.coût;
 	}
+	
+	public boolean getMarque() {
+		return this.marque;
+	}
+	
+	public void setCost(double cost) {
+		this.coût=cost;
+	}
+	
+	public void setMarque(boolean marque) {
+		this.marque=marque;
+	}
 }
