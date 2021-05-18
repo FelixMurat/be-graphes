@@ -39,16 +39,18 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 	        Node n=data.getGraph().getNodes().get(Tas.deleteMin().getSommet());
 	        tabLabel[n.getId()].setMarque(true);
 	        for (Arc a:n.getSuccessors()) {
-	        	if(tabLabel[a.getDestination().getId()].getMarque()==false){
-	        		if (tabLabel[a.getDestination().getId()].getCost()>tabLabel[n.getId()].getCost()+a.getLength()){
-	        			tabLabel[a.getDestination().getId()].setCost(tabLabel[n.getId()].getCost()+a.getLength());
-	        			tabLabel[a.getDestination().getId()].setPere(a);
-	        			
-	        			try {
-	        				Tas.remove(tabLabel[a.getDestination().getId()]);
-	        			} catch(Exception ElementNotFoundException ) {}
-	        			Tas.insert(tabLabel[a.getDestination().getId()]);
-	        		}
+	        	if (data.isAllowed(a)) {
+		        	if(tabLabel[a.getDestination().getId()].getMarque()==false){
+		        		if (tabLabel[a.getDestination().getId()].getCost()>tabLabel[n.getId()].getCost()+a.getLength()){
+		        			tabLabel[a.getDestination().getId()].setCost(tabLabel[n.getId()].getCost()+a.getLength());
+		        			tabLabel[a.getDestination().getId()].setPere(a);
+		        			
+		        			try {
+		        				Tas.remove(tabLabel[a.getDestination().getId()]);
+		        			} catch(Exception ElementNotFoundException ) {}
+		        			Tas.insert(tabLabel[a.getDestination().getId()]);
+		        		}
+		        	}
 	        	}
 	        }
         }
