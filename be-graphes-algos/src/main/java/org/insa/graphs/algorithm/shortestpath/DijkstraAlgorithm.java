@@ -38,9 +38,13 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         while ((tabLabel[data.getDestination().getId()].getMarque()==false)&&(!(Tas.isEmpty()))) {
 	        Node n=data.getGraph().getNodes().get(Tas.deleteMin().getSommet());
 	        tabLabel[n.getId()].setMarque(true);
+	        notifyNodeMarked(n);
 	        for (Arc a:n.getSuccessors()) {
 	        	if (data.isAllowed(a)) {
 		        	if(tabLabel[a.getDestination().getId()].getMarque()==false){
+		        		if (tabLabel[a.getDestination().getId()].getCost()==Float.MAX_VALUE) {
+		        			notifyNodeReached(a.getDestination());
+		        		}
 		        		if (tabLabel[a.getDestination().getId()].getCost()>tabLabel[n.getId()].getCost()+a.getLength()){
 		        			tabLabel[a.getDestination().getId()].setCost(tabLabel[n.getId()].getCost()+a.getLength());
 		        			tabLabel[a.getDestination().getId()].setPere(a);
