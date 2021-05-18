@@ -40,7 +40,9 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 	        tabLabel[n.getId()].setMarque(true);
 	       // System.out.println(tabLabel[n.getId()].getCost());
 	        notifyNodeMarked(n);
+	        //int x=0;
 	        for (Arc a:n.getSuccessors()) {
+	        //	x+=1;
 	        	if (data.isAllowed(a)) {
 		        	if(tabLabel[a.getDestination().getId()].getMarque()==false){
 		        		if (tabLabel[a.getDestination().getId()].getCost()==Float.MAX_VALUE) {
@@ -58,6 +60,11 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 		        	}
 	        	}
 	        }
+	       // if (x==n.getNumberOfSuccessors()) {
+        	//	System.out.println("ok");
+        //	}else {
+        //		System.out.println("pas ok");
+        //	}
         }
         
      // Destination has no predecessor, the solution is infeasible...
