@@ -5,7 +5,7 @@ import org.insa.graphs.model.Arc;
 
 public class Label implements Comparable<Label> {
 	private boolean marque;
-	private float coût;
+	public float coût;
 	private Arc père;
 	private int sommet;
 	
@@ -45,6 +45,6 @@ public class Label implements Comparable<Label> {
 	}
 	
 	public int compareTo(Label other) {
-        return Double.compare(getCost(), other.getCost());
+        return Float.compare(getCost(), other.getCost());
     }
 }
