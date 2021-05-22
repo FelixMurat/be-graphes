@@ -15,21 +15,25 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         super(data);
     }
     
-
+    Label[] LabelInit(ShortestPathData data) {
+    	Label[] tabLabel=new Label[data.getGraph().size()];
+    	for(Node o: data.getGraph().getNodes()) {
+    		tabLabel[o.getId()]=new Label(o.getId());
+    	}
+    	tabLabel[data.getOrigin().getId()].setCost(0);
+    	return tabLabel;
+    }
+    
     @Override
     protected ShortestPathSolution doRun() {
         final ShortestPathData data = getInputData();
         ShortestPathSolution solution = null;
         
-        Label[] tabLabel=new Label[data.getGraph().size()];
         
+        
+        Label[] tabLabel = LabelInit(data);
         BinaryHeap<Label> Tas=new BinaryHeap<Label>();
         
-        for(Node o: data.getGraph().getNodes()) {
-        	tabLabel[o.getId()]=new Label(o.getId());
-        }
-        
-        tabLabel[data.getOrigin().getId()].setCost(0);
         Tas.insert(tabLabel[data.getOrigin().getId()]);
         
         // Notify observers about the first event (origin processed).

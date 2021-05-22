@@ -13,15 +13,19 @@ public class LabelStar extends Label {
 			this.coûtDestination=(float)noeud.getPoint().distanceTo(destination.getPoint())/10f;//on estime qu'un oiseau vol à 10m/s
 		}
 	}
-	public float getCoûtTotal() {
+	public float getTotalCost() {
 		return (this.coût+this.coûtDestination);
 	}
+	
 	public float getCoûtDest() {
 		return this.coûtDestination;
 	}
+	
+	
+	
 	public int compareTo (LabelStar other) {
 		int resu;
-        resu= Float.compare(getCoûtTotal(), other.getCoûtTotal());
+        resu= Float.compare(getTotalCost(), other.getTotalCost());
         if (resu==0) {
         	return Float.compare(getCoûtDest(), other.getCoûtDest());
         }else {
