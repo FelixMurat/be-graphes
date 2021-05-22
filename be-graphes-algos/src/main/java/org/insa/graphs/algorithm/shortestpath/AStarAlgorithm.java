@@ -9,6 +9,7 @@ public class AStarAlgorithm extends DijkstraAlgorithm {
         super(data);
     }
     
+    @Override
     Label[] LabelInit(ShortestPathData data) {
     	boolean DistanceMode=data.getMode().equals(Mode.LENGTH);
     	LabelStar[] tabLabel=new LabelStar[data.getGraph().size()];

@@ -212,5 +212,17 @@ public class BinaryHeap<E extends Comparable<E>> implements PriorityQueue<E> {
     public String toString() {
         return BinaryHeapFormatter.toStringTree(this, 8);
     }
+    
+    public Boolean isValid() {
+    	boolean resu=true;
+    	for(E element:this.array) {
+    		if (2*this.array.indexOf(element)+2<this.size()) {
+    			if (element.compareTo(this.array.get(2*this.array.indexOf(element)+1))>=0||element.compareTo(this.array.get(2*this.array.indexOf(element)+2))>=0) {
+    				resu=false;
+    			}
+    		}
+    	}
+    	return resu;
+    }
 
 }

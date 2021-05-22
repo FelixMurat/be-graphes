@@ -10,9 +10,11 @@ public class LabelStar extends Label {
 		if (DistanceMode==true) {
 			this.coûtDestination=(float)noeud.getPoint().distanceTo(destination.getPoint());
 		}else {
-			this.coûtDestination=(float)noeud.getPoint().distanceTo(destination.getPoint())/10f;//on estime qu'un oiseau vol à 10m/s
+			this.coûtDestination=(float)noeud.getPoint().distanceTo(destination.getPoint())/10f;//vitesse de 10 m/s
 		}
 	}
+	
+	@Override
 	public float getTotalCost() {
 		return (this.coût+this.coûtDestination);
 	}
@@ -22,12 +24,12 @@ public class LabelStar extends Label {
 	}
 	
 	
-	
+
 	public int compareTo (LabelStar other) {
 		int resu;
-        resu= Float.compare(getTotalCost(), other.getTotalCost());
+        resu= Float.compare(this.getTotalCost(), other.getTotalCost());
         if (resu==0) {
-        	return Float.compare(getCoûtDest(), other.getCoûtDest());
+        	return Float.compare(this.getCoûtDest(), other.getCoûtDest());
         }else {
         	return resu;
         }
