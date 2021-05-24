@@ -43,12 +43,12 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
         while ((tabLabel[data.getDestination().getId()].getMarque()==false)&&(!(Tas.isEmpty()))) {
 	        Node n=data.getGraph().getNodes().get(Tas.deleteMin().getSommet());
 	        tabLabel[n.getId()].setMarque(true);
-	        System.out.println(tabLabel[n.getId()].getTotalCost());
+	        //System.out.println(tabLabel[n.getId()].getTotalCost());
 	        notifyNodeMarked(n);
-	        int x=0;
-	        System.out.println(Tas.isValid());
+	        //int x=0;
+	       // System.out.println(Tas.isValid());
 	        for (Arc a:n.getSuccessors()) {
-	        	x+=1;
+	        	//x+=1;
 	        	if (data.isAllowed(a)) {
 		        	if(tabLabel[a.getDestination().getId()].getMarque()==false){
 		        		if (tabLabel[a.getDestination().getId()].getCost()==Float.MAX_VALUE) {
@@ -79,11 +79,11 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 	        	  }
 	        }
          }
-	     if (x==n.getNumberOfSuccessors()) {
-            System.out.println("ok");
-        }else {
-        	System.out.println("pas ok");
-        }
+	 //    if (x==n.getNumberOfSuccessors()) {
+      //      System.out.println("ok");
+      //  }else {
+      //  	System.out.println("pas ok");
+      //  }
         
      // Destination has no predecessor, the solution is infeasible...
         }
