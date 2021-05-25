@@ -35,15 +35,15 @@ import org.junit.Test;
 @SuppressWarnings("unused")
 public abstract class ShortestPathAlgoTest{
 	
-	protected static Graph graphCarre, graphHauteGaronne;
+	protected static Graph graphCarre, graphInsa;
 	
 	@BeforeClass
 	public static void initAll() throws IOException{
 		String mapDirectory = "C:\\Users\\felix\\Desktop\\be-graphes\\Maps\\";
-		String mapHauteGaronne = mapDirectory + "haute-garonne.mapgr";
+		String mapInsa = mapDirectory + "insa.mapgr";
 		String mapCarre = mapDirectory + "carre.mapgr";
-		GraphReader readerHauteGaronne = new BinaryGraphReader(new DataInputStream(new BufferedInputStream(new FileInputStream(mapHauteGaronne))));
-		graphHauteGaronne = readerHauteGaronne.read();
+		GraphReader readerInsa = new BinaryGraphReader(new DataInputStream(new BufferedInputStream(new FileInputStream(mapInsa))));
+		graphInsa = readerInsa.read();
 		GraphReader readerCarre = new BinaryGraphReader(new DataInputStream(new BufferedInputStream(new FileInputStream(mapCarre))));
 		graphCarre = readerCarre.read();
 	}
@@ -74,31 +74,31 @@ public abstract class ShortestPathAlgoTest{
 		
 	@Test
 	public void TestDistanceSansContraintes(){
-		test(graphHauteGaronne,0);
+		test(graphInsa,0);
 		test(graphCarre,0);
 	}
 	
 	@Test
 	public void TestDistanceVoitures(){
-		test(graphHauteGaronne,1);
+		test(graphInsa,1);
 		test(graphCarre,1);
 	}
 	
 	@Test
 	public void TestTempsSansContraintes(){
-		test(graphHauteGaronne,2);
+		test(graphInsa,2);
 		test(graphCarre,2);
 	}
 	
 	@Test
 	public void TestTempsVoitures(){
-		test(graphHauteGaronne,3);
+		test(graphInsa,3);
 		test(graphCarre,3);
 	}
 	
 	@Test
 	public void TestTempsPiétons(){
-		test(graphHauteGaronne,4);
+		test(graphInsa,4);
 		test(graphCarre,4);
 	}
 		
