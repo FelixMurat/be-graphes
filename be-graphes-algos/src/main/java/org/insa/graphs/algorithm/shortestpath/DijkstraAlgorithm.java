@@ -54,7 +54,7 @@ public class DijkstraAlgorithm extends ShortestPathAlgorithm {
 		        		if (tabLabel[a.getDestination().getId()].getCost()==Float.MAX_VALUE) {
 		        			notifyNodeReached(a.getDestination());
 		        		}
-		        		if(data.getMode()==Mode.LENGTH) {
+		        		if(data.getMode().equals(Mode.LENGTH)) {
 			        		if (tabLabel[a.getDestination().getId()].getCost()>tabLabel[n.getId()].getCost()+a.getLength()){
 			        			tabLabel[a.getDestination().getId()].setCost(tabLabel[n.getId()].getCost()+a.getLength());
 			        			tabLabel[a.getDestination().getId()].setPere(a);
